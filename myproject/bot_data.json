@@ -1,0 +1,170 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hello",
+                "Hi",
+                "Hey",
+                "Howdy",
+                "What's up"
+            ],
+            "responses": [
+                "Hello! How can I assist you today?",
+                "Hi there! How can I help?",
+                "Hey! How can I assist you?"
+            ]
+        },
+        {
+            "tag": "time",
+            "patterns": [
+                "How long does it take for a landing page?",
+                "How much time does it take to create a website?",
+                "How long does it take to develop a mobile app?",
+                "What is the expected delivery time?",
+                "How long will it take to complete?",
+                "How much time does it take?"
+            ],
+            "responses": [
+                "The timeline varies based on the complexity of the project. A landing page typically takes around 1 week, while a full website or mobile app may take 1 to 4 months.",
+                "For mobile apps or websites, the development time can range from 1 to 4 months, while a landing page generally takes between 1 to 2 weeks.",
+                "Custom desktop software usually requires between 2 to 8 months, depending on the project's scope. Websites and mobile apps often take between 1 and 4 months.",
+                "AI solutions, websites, and mobile apps can take between 1 to 4 months to develop, depending on the features and requirements."
+            ]
+        }
+        ,
+        
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "Goodbye",
+                "See you later",
+                "I have to go",
+                "Catch you later"
+            ],
+            "responses": [
+                "Goodbye! Have a great day!",
+                "See you later!",
+                "Take care!"
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thank you",
+                "Thanks",
+                "I appreciate it",
+                "Much appreciated"
+            ],
+            "responses": [
+                "You're welcome!",
+                "Happy to help!",
+                "No problem at all!",
+                "Anytime!"
+            ]
+        },
+        {
+            "tag": "landing_page_pricing",
+            "patterns": [
+                "What is the cost of a landing page?",
+                "How much do you charge for a landing page?",
+                "What are your rates for landing pages?"
+            ],
+            "responses": [
+                "Landing pages generally range from $300 to $1500, depending on design and content requirements.",
+                "For a custom landing page, we charge from $300 to $1500 or more depands on fetures and complexsity."
+            ]
+        },
+        {
+            "tag": "mobile_app_pricing",
+            "patterns": [
+                "How much would it cost to develop a mobile app?",
+                "What is the price of a mobile app?",
+                "Can you estimate the cost of an app?"
+            ],
+            "responses": [
+                "For mobile app development, pricing typically starts at $4000 for simple apps and can go up to $30,000 or more for complex functionalities.",
+                "The cost depends on features and platform. Please provide more details for an accurate estimate."
+            ]
+        },
+        {
+            "tag": "desktop_software_pricing",
+            "patterns": [
+                "How much does desktop software cost?",
+                "What are your rates for custom software?",
+                "Can you give me an estimate for desktop software?"
+            ],
+            "responses": [
+                "Custom software development typically starts at around $3,000 for small projects. Depending on the complexity and specific requirements, costs can range up to $50,000 or more for larger, more sophisticated applications.",
+                "The pricing for desktop software generally begins at approximately $3,000 for basic functionality. For more advanced software solutions, prices can escalate to $30,000 or higher, depending on the features and scope of the project."
+]
+
+        },
+        {
+            "tag": "ai_solution_pricing",
+            "patterns": [
+                "What is the cost for AI solutions?",
+                "How much do you charge for AI software?",
+                "Can you estimate the cost of AI solutions for my business?"
+            ],
+            "responses": [
+                "Pricing for AI solutions can vary widely based on complexity and requirements but its range from $2000 to more. We recommend a consultation to understand your needs better.",
+                "AI solutions typically start from $2000, depending on the scope and scale of the project."
+            ]
+        },
+        {
+            "tag": "website_pricing",
+            "patterns": [
+                "How much does a website cost?",
+                "Can you give me an estimate for a website?",
+                "What are your rates for websites?",
+                "How much is it to create a website?"
+            ],
+            "responses": [
+                "The cost of a website varies based on complexity and features. Basic websites start at around $2000, while more advanced sites can range from $4000 to $6000 or more.",
+                "Please connect use so well now whats your needs but basic e-comerce websites start at around $2000 and comes with 4-5 pages , and with admin panle."
+            ]
+        },
+        {
+            "tag": "start",
+            "patterns": [
+                "How do I get started?",
+                "What is the first step?",
+                "How long will it take to complete my project?",
+                "What is the process to begin?",
+                "Can you explain how to start?",
+                "How do I initiate a project with you?",
+                "What should I do to get started?",
+                "How much time will it take to finish?"
+            ],
+            "responses": [
+                "Getting started with us is easy! Simply reach out to us, and we'll guide you through the process tailored to your needs.",
+                "The time it takes to complete a project depends on its complexity and requirements. Typically, we provide an estimated timeline during our initial consultation.",
+                "To begin, you can contact us for a consultation where we discuss your project requirements. Our team will guide you on the next steps!",
+                "We recommend reaching out to us directly to discuss your project. We can provide an estimated timeline based on your specific needs.",
+                "We're here to help you start your project smoothly! Contact us to schedule a consultation. Our business hours are from 9 AM to 5 PM, Monday to Friday."
+            ]
+        },
+        {
+            "tag": "services",
+            "patterns": [
+                "What services do you offer?",
+                "Can you tell me about your services?",
+                "What do you provide?",
+                "What kind of services do you have?",
+                "Do you offer any services?",
+                "What services can I get from you?",
+                "Can you list your services?",
+                "Tell me about your offerings."
+            ],
+            "responses": [
+                "We specialize in a variety of digital solutions tailored for businesses, including custom desktop software, AI solutions for e-commerce, mobile apps, websites, and landing pages. How can we assist you today?",
+                "Our services encompass high-quality software development and digital solutions designed to enhance productivity and efficiency, including desktop applications, mobile apps, and innovative AI technologies for e-commerce.",
+                "We offer a comprehensive range of services, from custom desktop software development to AI solutions, mobile apps, and website creation, including landing pages. Feel free to ask for more details on any of these services!",
+                "Our team delivers a full suite of solutions, including tailored desktop software, mobile applications, AI-powered e-commerce platforms, and user-friendly websites. Contact us for more information!",
+                "For a detailed overview of our services, including desktop software, AI solutions, mobile apps, and websites, please reach out to us directly via Gmail or WhatsApp!"
+            ]
+        }
+    ]
+}
