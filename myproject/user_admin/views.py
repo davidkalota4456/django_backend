@@ -194,12 +194,10 @@ def upload_image_to_s3(file, bucket_name, client_name, object_name):
 def update_project(request):
     if request.method == "POST":
         try:
-            # Validate CSRF token
-            csrf_token_key = request.headers.get('X-Custom-CSRFToken')
+            csrf_token_key = request.POST.get("csrf_token")
             if not find_session_scrf_admin(csrf_token_key):
                 return JsonResponse({'error': 'CSRF token key not found or expired'}, status=403)
-
-            # Parse request data
+             #Parse request data
             client_name = request.POST.get('clientName')
             new_end = request.POST.get('endDate')
             new_info = request.POST.get('projectInfo')
