@@ -12,5 +12,6 @@ urlpatterns = [
     path('update_project/', views.update_project, name='update_project'),
     path('admin_delete_user/', views.admin_delete_user, name='admin_delete_user'),
     path('admin_login_view/', views.admin_login_view, name='admin_login_view'),
+    path('generate_presigned_url_route/', views.generate_presigned_url_route, name='generate_presigned_url_route'),
     path('admin_update_itself/', views.admin_update_itself, name='admin_update_itself'),               
 ]

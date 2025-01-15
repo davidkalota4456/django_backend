@@ -105,7 +105,7 @@ def create_s3_folder_for_client(bucket_name, folder_name):
         # Create an empty file to represent the folder (S3 treats this as a folder)
         s3.put_object(Bucket=bucket_name, Key=f"{folder_name}/")
 
-        print(f"Folder '{folder_name}' created in bucket '{bucket_name}'")
+        
 
     except (NoCredentialsError, PartialCredentialsError) as e:
         print("Error: AWS credentials are missing or invalid.")
@@ -191,6 +191,59 @@ def upload_image_to_s3(file, bucket_name, client_name, object_name):
         print(f"An error occurred: {str(e)}")
 
 
+
+
+def generate_presigned_url(bucket_name, object_name, content_type, expiration=3600):
+    """Generate a presigned URL to upload a file to S3."""
+    try:
+        response = s3.generate_presigned_url(
+            'put_object',
+            Params={
+                'Bucket': bucket_name,
+                'Key': object_name,
+                'ContentType': content_type  # Add the ContentType here
+            },
+            ExpiresIn=expiration
+        )
+        return response
+    except NoCredentialsError:
+        print("AWS credentials not available.")
+        return None
+    except Exception as e:
+        print(f"Error generating presigned URL: {str(e)}")
+        return None
+
+def generate_presigned_url_route(request):
+    """Django view to generate a presigned URL."""
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            print(f"Received data: {data}")  # Load the JSON data sent from the frontend
+            object_name = data.get("objectName")
+            content_type = data.get("contentType")  
+            print(f"Object name: {object_name}, Content type: {content_type}")  # Debugging: print objectName and contentType
+        
+            if not object_name or not content_type:
+                return JsonResponse({'error': 'objectName and contentType are required'}, status=400)
+        
+            # Use your bucket name from Django settings
+            bucket_name = settings.BUCKET_NAME
+        
+            # Generate the presigned URL
+            url = generate_presigned_url(bucket_name, object_name, content_type)
+            if url:
+                return JsonResponse({'url': url}, status=200)  # Return the presigned URL
+            else:
+                return JsonResponse({'error': 'Could not generate presigned URL'}, status=500)  # Error generating URL
+        
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse({'error': 'Server error'}, status=500)
+
+
+
 def update_project(request):
     if request.method == "POST":
         try:
@@ -201,14 +254,14 @@ def update_project(request):
             client_name = request.POST.get('clientName')
             new_end = request.POST.get('endDate')
             new_info = request.POST.get('projectInfo')
-            image_file = request.FILES.get('projectPicture')
-            bucket_name = settings.BUCKET_NAME
+            #image_file = request.FILES.get('projectPicture')
+            #bucket_name = settings.BUCKET_NAME
 
             # Validate input
             if not client_name:
                 return JsonResponse({'error': 'Client name is required'}, status=400)
-            if not image_file and not new_end and not new_info:
-                return JsonResponse({'error': 'No updates provided'}, status=400)
+            #if not image_file and not new_end and not new_info:
+            #    return JsonResponse({'error': 'No updates provided'}, status=400)
 
             # Find project
             found_project = ClientProject.objects.filter(client_name=client_name).first()
@@ -227,10 +280,10 @@ def update_project(request):
                 except ValueError:
                     return JsonResponse({'error': 'Invalid date format for endDate'}, status=400)
 
-            if image_file:
-                file_count = check_folder_exists(bucket_name, client_name)
-                object_name = f"{client_name}/imageorvideo{file_count + 1}"
-                upload_image_to_s3(image_file, bucket_name, client_name, object_name)
+            #if image_file:
+            #    file_count = check_folder_exists(bucket_name, client_name)
+            #    object_name = f"{client_name}/imageorvideo{file_count + 1}"
+            #    upload_image_to_s3(image_file, bucket_name, client_name, object_name)
 
                 
 
